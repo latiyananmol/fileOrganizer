@@ -40,9 +40,9 @@ console.log(allFiles);
 //4 tRAVERSAL TO allFiles and classify
 for(let i=0;i<allFiles.length;i++){
    // let ext=allFiles[i].split(".")[1];// see what is do
-   //let ext=path.extname(allFiles[i]); // only take extension name(example .exe,.txt)
-   // console.log(ext);
-   // 1 check if it is a file of folder
+   //   let ext=path.extname(allFiles[i]); // only take extension name(example .exe,.txt)
+   //     console.log(ext);
+   //     1 check if it is a file of folder
    let fullPathOfFile=path.join(srcPath,allFiles[i]); // complete path ajega
    //1 check is it is file of folder
    let iFile=fs.lstatSync(fullPathOfFile).isFile();// lstatSync(file ya folder ka sara kala chitta 
