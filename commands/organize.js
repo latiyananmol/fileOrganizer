@@ -29,8 +29,28 @@ fs.mkdirSync(organizedFiles); // this will create new folder
 }else{
     console.log("folder already exist")
 }
+// 3 scan the entire source path 
 
+// read the content of the directory
+
+let allFiles=fs.readdirSync(srcPath);// only read dir basically reads the names of files present in dir 
+console.log(allFiles);
+
+
+//4 tRAVERSAL TO allFiles and classify
+for(let i=0;i<allFiles.length;i++){
+   // let ext=allFiles[i].split(".")[1];// see what is do
+   let ext=path.extname(allFiles[i]);
+    console.log(ext);
+}
 
 
 }
-organize();
+//let srcPath="C:\Users\latiy\Desktop\dev\webdev\lecture23\fileOrganizer\downloads";
+//organize(srcPath);
+//let srcPath= "C:\Users\latiy\Desktop\dev\webdev\lecture23\fileOrganizer\downloads";
+let srcPath="C:\\Users\\latiy\\Desktop\\dev\\webdev\\lecture23\\fileOrganizer\\download"; // catch
+organize(srcPath);
+
+
+
