@@ -40,8 +40,22 @@ console.log(allFiles);
 //4 tRAVERSAL TO allFiles and classify
 for(let i=0;i<allFiles.length;i++){
    // let ext=allFiles[i].split(".")[1];// see what is do
-   let ext=path.extname(allFiles[i]);
-    console.log(ext);
+   //let ext=path.extname(allFiles[i]); // only take extension name(example .exe,.txt)
+   // console.log(ext);
+   // 1 check if it is a file of folder
+   let fullPathOfFile=path.join(srcPath,allFiles[i]); // complete path ajega
+   //1 check is it is file of folder
+   let iFile=fs.lstatSync(fullPathOfFile).isFile();// lstatSync(file ya folder ka sara kala chitta 
+// this is how to check wheather it is file or Folder)
+   if(iFile){
+    // 1.1 get extenstion name
+    let ext =path.extname(allFiles[i].split("."))[1];
+    // 1.2 get folder name
+    let folderName=getfolderName(ext);// archives
+    // 1.3 copy from src folder(src path)and paste in dest folder (folder_name eq. media , music anything)
+    copyFileToDest(srcPath,fullPathOfFile,folderName);//  copyFileToDest(yhaSe,YehChezz,yhaPar);
+   }
+
 }
 
 
@@ -54,3 +68,14 @@ organize(srcPath);
 
 
 
+function getfolderName(ext){
+    // magic 
+
+
+
+    return folderName;
+}
+function copyFileToDest(srcPath,fullPathOfFile,folderName){
+    // magic 
+    
+}
