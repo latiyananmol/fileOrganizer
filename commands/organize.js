@@ -106,6 +106,8 @@ function copyFileToDest(srcPath,fullPathOfFile,folderName){
     let fileName=path.basename(fullPathOfFile);
     let destFileName=path.join(destFolderPath,fileName);
                        // src         dest 
-    fs.copyFileSync(fullPathOfFile,destFileName);
+    fs.copyFileSync(fullPathOfFile,destFileName);// this only copy content of the files the first argument and then by second 
+    // argument if goes to the respective path and create the respective file according to path and paste that lines to that new basename
+    //
 
 }
