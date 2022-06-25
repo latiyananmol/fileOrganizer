@@ -45,21 +45,32 @@ for(let i=0;i<allFiles.length;i++){
    //     1 check if it is a file of folder
    let fullPathOfFile=path.join(srcPath,allFiles[i]); // complete path ajega
    //1 check is it is file of folder
-   let iFile=fs.lstatSync(fullPathOfFile).isFile();// lstatSync(file ya folder ka sara kala chitta 
+   let isFile=fs.lstatSync(fullPathOfFile).isFile();// lstatSync(file ya folder ka sara kala chitta 
 // this is how to check wheather it is file or Folder)
-   if(iFile){
+console.log("anmol"+isFile);
+   if(isFile){
     // 1.1 get extenstion name
-    let ext =path.extname(allFiles[i].split("."))[1];
+    let ext =allFiles[i].split(".")[1];
+    // console.log("ext is in next line");
+    // console.log(ext);
     // 1.2 get folder name
-    let folderName=getfolderName(ext);// archives
+
+    let folderName;
+    folderName=getFolderName(ext);// archives
+  //  console.log("anmol2");
+//   console.log("folder name is "+folderName);
+
     // 1.3 copy from src folder(src path)and paste in dest folder (folder_name eq. media , music anything)
     copyFileToDest(srcPath,fullPathOfFile,folderName);//  copyFileToDest(yhaSe,YehChezz,yhaPar);
+   // console.log("flag")
+   // console.log("anmol2");
    }
 
 }
 
 
 }
+
 //let srcPath="C:\Users\latiy\Desktop\dev\webdev\lecture23\fileOrganizer\downloads";
 //organize(srcPath);
 //let srcPath= "C:\Users\latiy\Desktop\dev\webdev\lecture23\fileOrganizer\downloads";
@@ -68,14 +79,33 @@ organize(srcPath);
 
 
 
-function getfolderName(ext){
+function getFolderName(ext){
     // magic 
+    for(let key in types){
+        for(let i=0;i<types[key].length;i++){
+            if(types[key][i]==ext){
+            console.log(`qweer    key${key}`);
+            return key;
+            }
+        }
+
+    }
 
 
 
-    return folderName;
+    
 }
 function copyFileToDest(srcPath,fullPathOfFile,folderName){
     // magic 
-    
+    // 1. folder ka path banana h
+    let destFolderPath=path.join(srcPath,"organized_files",folderName);
+    if(!fs.existsSync(destFolderPath)){
+        fs.mkdirSync(destFolderPath);
+    }
+    //3.copy File from srcPath to destFolder
+    let fileName=path.basename(fullPathOfFile);
+    let destFileName=path.join(destFolderPath,fileName);
+                       // src         dest 
+    fs.copyFileSync(fullPathOfFile,destFileName);
+
 }
