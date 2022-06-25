@@ -47,16 +47,16 @@ for(let i=0;i<allFiles.length;i++){
    //1 check is it is file of folder
    let isFile=fs.lstatSync(fullPathOfFile).isFile();// lstatSync(file ya folder ka sara kala chitta 
 // this is how to check wheather it is file or Folder)
-console.log("anmol"+isFile);
+//console.log("anmol"+isFile);
    if(isFile){
     // 1.1 get extenstion name
-    let ext =allFiles[i].split(".")[1]; // HERE ERROR WAS THERE WHICH IS FINDED BY ME
+    let ext =allFiles[i].split(".")[1]; // HERE ERROR WAS THERE WHICH IS FINDED BY ME ext mp3
     // console.log("ext is in next line");
     // console.log(ext);
     // 1.2 get folder name
 
     let folderName;
-    folderName=getFolderName(ext);// archives
+    folderName=getFolderName(ext);// archives music
   //  console.log("anmol2");
 //   console.log("folder name is "+folderName);
 
@@ -74,8 +74,8 @@ console.log("anmol"+isFile);
 //let srcPath="C:\Users\latiy\Desktop\dev\webdev\lecture23\fileOrganizer\downloads";
 //organize(srcPath);
 //let srcPath= "C:\Users\latiy\Desktop\dev\webdev\lecture23\fileOrganizer\downloads";
-let srcPath="C:\\Users\\latiy\\Desktop\\dev\\webdev\\lecture23\\fileOrganizer\\download"; // catch
-organize(srcPath);
+// let srcPath="C:\\Users\\latiy\\Desktop\\dev\\webdev\\lecture23\\fileOrganizer\\download"; // catch
+// organize(srcPath); commenting it because now call willl be from the main.js
 
 
 
@@ -84,14 +84,16 @@ function getFolderName(ext){
     for(let key in types){
         for(let i=0;i<types[key].length;i++){
             if(types[key][i]==ext){
-            console.log(`qweer    key${key}`);
+      //      console.log(`qweer    key${key}`); for  checking 
             return key;
             }
         }
 
     }
 
-
+// if there is any extention which is not present in our 2d array 
+// of types
+return "miscellaneous";
 
     
 }
@@ -108,6 +110,12 @@ function copyFileToDest(srcPath,fullPathOfFile,folderName){
                        // src         dest 
     fs.copyFileSync(fullPathOfFile,destFileName);// this only copy content of the files the first argument and then by second 
     // argument if goes to the respective path and create the respective file according to path and paste that lines to that new basename
-    //
+    // yeh data ko replce kar ta hai just think that 
+    // when this code is run multiple times then why it is not creating the new files in organised_files folder
+
+}
+// exporting 
+module.exports={
+    organize:organize
 
 }

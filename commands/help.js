@@ -3,8 +3,8 @@ function help(){
     // here used backtics:
     console.log(`
     List of All the commands :
-                     node main.js tree "directorypath"
-                     node main.js organizer "directorypath"
+                     node main.js tree directorypath
+                     node main.js organize directorypath
                      node main.js help
     `);
 }
