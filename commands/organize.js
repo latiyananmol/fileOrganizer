@@ -50,7 +50,7 @@ for(let i=0;i<allFiles.length;i++){
 console.log("anmol"+isFile);
    if(isFile){
     // 1.1 get extenstion name
-    let ext =allFiles[i].split(".")[1];
+    let ext =allFiles[i].split(".")[1]; // HERE ERROR WAS THERE WHICH IS FINDED BY ME
     // console.log("ext is in next line");
     // console.log(ext);
     // 1.2 get folder name
